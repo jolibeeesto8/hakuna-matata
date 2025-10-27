@@ -1,0 +1,451 @@
+/* EnhancedUserDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inconsolata:wght@400;700&family=VT323&display=swap');
+
+.enhanced-user-dashboard {
+  position: relative;
+  min-height: 100vh;
+  font-family: 'Orbitron', 'Courier New', monospace;
+  overflow: hidden;
+  color: #ff4500; /* Neon orange primary text */
+  background: transparent;
+}
+
+.enhanced-user-dashboard .cyber-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.enhanced-user-dashboard .matrix-rain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.enhanced-user-dashboard .matrix-rain .rain-char {
+  position: absolute;
+  color: rgba(255, 69, 0, 0.7); /* Neon orange characters */
+  font-family: 'Inconsolata', monospace;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  animation: money-rain linear infinite, money-glow 1.5s infinite;
+  opacity: 0.7;
+}
+
+@keyframes money-rain {
+  0% { transform: translateY(-100vh); opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0.3; }
+}
+
+@keyframes money-glow {
+  0% { text-shadow: 0 0 5px #ff4500; }
+  50% { text-shadow: 0 0 10px #ff4500, 0 0 15px #9933ff; }
+  100% { text-shadow: 0 0 5px #ff4500; }
+}
+
+.dashboard-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 2px solid #ffff00; /* Neon yellow border */
+  z-index: 10;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  animation: pixelated-grow 0.8s ease-out;
+}
+
+@keyframes pixelated-grow {
+  0% { filter: blur(5px); transform: scale(0.95); opacity: 0; }
+  50% { filter: blur(2px); opacity: 0.5; }
+  100% { filter: blur(0); transform: scale(1); opacity: 1; }
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-left h1 {
+  font-size: 2.5rem; /* Increased size to make "HMOS" more visible */
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff4500 0%, #9933ff 100%); /* Orange to purple gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: typing 2s steps(20, end) forwards, pulse-glow 1.5s infinite 2s;
+  margin-top: 10px; /* Pull down slightly */
+  text-shadow: 0 0 15px #ff4500, 0 0 20px #9933ff; /* Enhanced glow for visibility */
+}
+
+.header-left h1::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: #ff4500; /* Neon orange cursor */
+  animation: blink-cursor 0.7s infinite;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background: rgba(153, 51, 255, 0.2); /* Bright purple */
+  color: #ff4500; /* Neon orange */
+  border: 2px solid #ffff00; /* Neon yellow */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  animation: neon-flicker 1.5s infinite;
+}
+
+.header-button:hover {
+  background: rgba(255, 255, 0, 0.3); /* Neon yellow */
+  color: #ffffff;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #ff4500;
+}
+
+@keyframes neon-flicker {
+  0% { opacity: 1; box-shadow: 0 0 5px #9933ff; }
+  10% { opacity: 0.9; box-shadow: 0 0 10px #ff4500; }
+  20% { opacity: 0.95; box-shadow: 0 0 8px #ffff00; }
+  100% { opacity: 1; box-shadow: 0 0 5px #9933ff; }
+}
+
+.wallet-display {
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #9933ff; /* Bright purple */
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  animation: wallet-shimmer 2s infinite;
+  margin-bottom: 20px; /* Small gap between balance and mode switcher */
+}
+
+@keyframes wallet-shimmer {
+  0% { box-shadow: 0 0 5px #9933ff, inset 0 0 5px #ff4500; }
+  50% { box-shadow: 0 0 10px #ffff00, inset 0 0 10px #9933ff; }
+  100% { box-shadow: 0 0 5px #9933ff, inset 0 0 5px #ff4500; }
+}
+
+.wallet-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #9933ff; /* Bright purple */
+  text-shadow: 0 0 8px #9933ff; /* Enhanced purple glow for visibility */
+  margin-bottom: 0.5rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.wallet-header span {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: typing 1.5s steps(10, end) forwards, terminal-flicker 0.9s infinite 1.5s;
+}
+
+.wallet-header span::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: #9933ff; /* Bright purple cursor */
+  animation: blink-cursor 0.7s infinite;
+}
+
+.wallet-balances {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.balance-item {
+  min-width: 80px;
+  text-align: center;
+}
+
+.balance-label {
+  font-size: 0.8rem;
+  color: #9933ff; /* Bright purple */
+  text-shadow: 0 0 8px #9933ff; /* Enhanced purple glow for visibility */
+  margin-bottom: 0.25rem;
+  font-family: 'Inconsolata', monospace;
+  text-transform: uppercase;
+}
+
+.balance-value {
+  font-size: 1.2rem; /* Increased size for visibility */
+  font-weight: 700;
+  font-family: 'VT323', monospace;
+  color: #ffffff; /* White base for better contrast */
+  text-shadow: 0 0 10px #ff4500, 0 0 15px #9933ff; /* Strong glow for visibility */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: typing 1.5s steps(10, end) forwards, terminal-pulse 1.2s infinite 1.5s;
+}
+
+.balance-value::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: #ffff00; /* Neon yellow cursor */
+  animation: blink-cursor 0.7s infinite;
+}
+
+@keyframes terminal-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.balance-value.available {
+  color: #00cc99; /* Neon green */
+  text-shadow: 0 0 10px #00cc99; /* Enhanced green glow */
+}
+
+.balance-value.pending {
+  color: #ffff00; /* Neon yellow */
+  text-shadow: 0 0 10px #ffff00; /* Enhanced yellow glow */
+}
+
+.balance-value.frozen {
+  color: #ff3333; /* Bright red */
+  text-shadow: 0 0 10px #ff3333; /* Enhanced red glow */
+}
+
+.mode-switcher {
+  position: fixed;
+  top: 140px; /* Adjusted to create a gap from wallet-display */
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 2px solid #ffff00; /* Neon yellow */
+  padding: 0.5rem 2rem;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  animation: pixelated-grow 0.8s ease-out;
+  height: 60px; /* Adjusted height to fit mode buttons */
+}
+
+.welcome-container {
+  position: fixed;
+  top: 240px; /* Below mode-switcher (140px + 60px) */
+  width: 100%;
+  padding: 0 2rem;
+  z-index: 8;
+  text-align: center;
+}
+
+.welcome-container p {
+  color: #9933ff; /* Bright purple */
+  text-shadow: 0 0 8px #9933ff; /* Enhanced purple glow for visibility */
+  font-size: 1rem;
+  font-family: 'Inconsolata', monospace;
+  width: 100%; /* Ensure full width for marquee */
+  overflow: hidden;
+  display: inline-block;
+  animation: marquee 10s linear infinite; /* Right-to-left marquee */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.mode-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  background: rgba(153, 51, 255, 0.2); /* Bright purple */
+  color: #ff4500; /* Neon orange */
+  border: 2px solid #ffff00; /* Neon yellow */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', monospace;
+  text-transform: uppercase;
+  font-weight: 700;
+  animation: neon-flicker 1.5s infinite;
+}
+
+.mode-button span {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: typing 1.5s steps(15, end) forwards, pulse-glow 1.5s infinite 1.5s;
+}
+
+.mode-button span::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  color: #ff4500; /* Neon orange cursor */
+  animation: blink-cursor 0.7s infinite;
+}
+
+.mode-button:hover {
+  background: rgba(255, 255, 0, 0.3); /* Neon yellow */
+  color: #ffffff;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #ff4500;
+}
+
+.mode-button.active {
+  background: #9933ff; /* Bright purple */
+  color: #ffffff;
+  border-color: #ffff00; /* Neon yellow */
+  text-shadow: 0 0 10px #ff4500;
+  box-shadow: 0 0 12px #9933ff;
+}
+
+.dashboard-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  margin-top: 300px; /* Offset for header (120px) + mode-switcher (140px) + welcome (60px) */
+  min-height: calc(100vh - 300px);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.5rem;
+  animation: pixelated-grow 0.8s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+.notification-bell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background: rgba(153, 51, 255, 0.2); /* Bright purple */
+  color: #ff4500; /* Neon orange */
+  border: 2px solid #ffff00; /* Neon yellow */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'VT323', monospace;
+  text-transform: uppercase;
+  animation: neon-flicker 1.5s infinite;
+}
+
+.notification-bell:hover {
+  background: rgba(255, 255, 0, 0.3); /* Neon yellow */
+  color: #ffffff;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px #ff4500;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #9933ff; /* Bright purple */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  z-index: 100;
+  animation: pixelated-grow 0.5s ease-out;
+  font-family: 'Inconsolata', monospace;
+  color: #ff4500; /* Neon orange */
+}
+
+@media (max-width: 1024px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .header-right {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Right-aligned for professional look */
+  }
+
+  .wallet-balances {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .mode-switcher {
+    padding: 0.5rem 1rem;
+    top: 140px; /* Maintain gap on smaller screens */
+  }
+
+  .dashboard-main {
+    padding: 1rem;
+  }
+
+  .welcome-container {
+    top: 200px; /* Adjusted for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container,
+  .mode-switcher,
+  .dashboard-main {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .header-button span,
+  .mode-button span {
+    display: none;
+  }
+
+  .wallet-display {
+    width: 100%;
+  }
+
+  .notification-bell span {
+    display: none;
+  }
+
+  .welcome-container {
+    top: 200px; /* Ensure visibility on small screens */
+  }
+}
